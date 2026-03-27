@@ -68,6 +68,7 @@
             text-shadow: 0 0 10px var(--primary);
         }
 
+        /* HERO SECTION */
         .hero {
             height: 100vh;
             display: flex;
@@ -75,6 +76,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 0 20px;
         }
 
         .hero h1 { 
@@ -84,12 +86,14 @@
             background: linear-gradient(180deg, #fff 40%, var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
         }
 
         /* SKILLS SECTION */
         .skills-section {
-            padding: 100px 8%;
-            background: rgba(0, 0, 0, 0.2);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 40px;
         }
 
         .skills-grid {
@@ -104,19 +108,7 @@
             padding: 1.5rem;
             border-left: 2px solid var(--secondary);
             position: relative;
-            overflow: hidden;
         }
-
-        .skill-node::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(112, 0, 255, 0.05), transparent);
-            transform: translateX(-100%);
-            transition: 0.5s;
-        }
-
-        .skill-node:hover::before { transform: translateX(100%); }
 
         .skill-label {
             font-family: 'Space Mono';
@@ -130,22 +122,22 @@
         .skill-bar-bg {
             width: 100%;
             height: 4px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .skill-bar-fill {
             height: 100%;
             background: var(--primary);
             width: 0;
-            transition: width 1.5s cubic-bezier(0.1, 1, 0.3, 1);
+            transition: width 2s cubic-bezier(0.23, 1, 0.32, 1);
             box-shadow: 0 0 10px var(--primary);
         }
 
-        /* REVEAL ACTIVE FOR SKILLS */
-        .active .skill-bar-fill.html { width: 95%; }
-        .active .skill-bar-fill.react { width: 88%; }
-        .active .skill-bar-fill.paper { width: 92%; }
-        .active .skill-bar-fill.hydro { width: 80%; }
+        /* Trigger widths when section is active */
+        .active .fill-web { width: 95%; }
+        .active .fill-ui { width: 88%; }
+        .active .fill-paper { width: 92%; }
+        .active .fill-kinetic { width: 82%; }
 
         /* MODULE CARDS */
         .container { max-width: 1300px; margin: 0 auto; padding: 100px 40px; }
@@ -153,33 +145,53 @@
         
         .card {
             background: var(--card-bg);
-            padding: 3rem 2rem;
+            padding: 3.5rem 2.5rem;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
 
         .card:hover { 
             border-color: var(--primary);
             background: rgba(15, 23, 42, 0.6);
             transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
 
+        .card h3 {
+            font-family: 'Space Mono';
+            font-size: 0.8rem;
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        /* BUTTONS (FIXED CLICKABILITY) */
         .btn {
             display: inline-block;
             margin-top: 30px;
             padding: 12px 28px;
+            background: transparent;
             border: 1px solid var(--primary);
             color: var(--primary);
             text-decoration: none;
             font-family: 'Space Mono', monospace;
             font-size: 0.75rem;
-            transition: 0.4s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            z-index: 50; /* Ensures button is always on top */
         }
 
         .btn:hover {
             background: var(--primary);
             color: var(--bg);
             box-shadow: 0 0 20px var(--primary);
+            transform: translateY(-2px);
         }
 
         .reveal {
@@ -191,12 +203,14 @@
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         footer { 
-            padding: 80px 20px; 
+            padding: 100px 20px; 
             text-align: center;
             font-family: 'Space Mono';
             font-size: 0.7rem;
             color: var(--text-dim);
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
+
     </style>
 </head>
 <body>
@@ -205,7 +219,7 @@
 
     <nav>
         <div class="logo">ASTRO_SYS</div>
-        <div style="font-family: 'Space Mono'; font-size: 0.65rem; color: var(--secondary);">[ CONNECTION: SECURE ]</div>
+        <div style="font-family: 'Space Mono'; font-size: 0.65rem; color: var(--secondary); letter-spacing: 2px;">[ STATUS: OPERATIONAL ]</div>
     </nav>
 
     <section class="hero">
@@ -214,23 +228,23 @@
     </section>
 
     <section class="skills-section reveal">
-        <h2 style="font-family: 'Space Mono'; font-size: 1.5rem; letter-spacing: -1px;">CORE_COMPETENCIES</h2>
+        <h2 style="font-family: 'Space Mono'; font-size: 1.2rem; letter-spacing: 4px; color: #fff;">CORE_SKILLS</h2>
         <div class="skills-grid">
             <div class="skill-node">
-                <div class="skill-label"><span>FULLSTACK_DEV</span><span>95%</span></div>
-                <div class="skill-bar-bg"><div class="skill-bar-fill html"></div></div>
+                <div class="skill-label"><span>FULLSTACK_ARCH</span><span>95%</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill fill-web"></div></div>
             </div>
             <div class="skill-node">
-                <div class="skill-label"><span>UI/UX_ARCHITECTURE</span><span>88%</span></div>
-                <div class="skill-bar-bg"><div class="skill-bar-fill react"></div></div>
+                <div class="skill-label"><span>INTERFACE_DESIGN</span><span>88%</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill fill-ui"></div></div>
             </div>
             <div class="skill-node">
-                <div class="skill-label"><span>GEOMETRIC_PAPERCRAFT</span><span>92%</span></div>
-                <div class="skill-bar-bg"><div class="skill-bar-fill paper"></div></div>
+                <div class="skill-label"><span>GEOMETRIC_FORMS</span><span>92%</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill fill-paper"></div></div>
             </div>
             <div class="skill-node">
-                <div class="skill-label"><span>KINETIC_MECHANICS</span><span>80%</span></div>
-                <div class="skill-bar-bg"><div class="skill-bar-fill hydro"></div></div>
+                <div class="skill-label"><span>KINETIC_ENG</span><span>82%</span></div>
+                <div class="skill-bar-bg"><div class="skill-bar-fill fill-kinetic"></div></div>
             </div>
         </div>
     </section>
@@ -238,42 +252,45 @@
     <div class="container">
         <div class="grid">
             <div class="card reveal">
-                <h3 style="font-family: 'Space Mono'; font-size: 0.8rem; color: var(--primary); margin-bottom: 1rem;">MODULE_01</h3>
-                <p style="color: var(--text-dim);">High-end digital research hub deployed for innovative data management and UI experiments.</p>
-                <a href="https://hsi-labs.vercel.app" target="_blank" class="btn">ACCESS HSI-LABS</a>
+                <h3>MODULE_01 // DIGITAL</h3>
+                <p style="color: var(--text-dim); font-size: 0.95rem;">High-performance research hub for innovative data management and UI experiments.</p>
+                <a href="https://hsi-labs.vercel.app" target="_blank" class="btn">INITIALIZE.EXE</a>
             </div>
 
             <div class="card reveal">
-                <h3 style="font-family: 'Space Mono'; font-size: 0.8rem; color: var(--primary); margin-bottom: 1rem;">MODULE_02</h3>
-                <p style="color: var(--text-dim);">Precision engineering of geometric paper forms and complex kinetic folding arrays.</p>
-                <div class="btn">SPECS.EXE</div>
+                <h3>MODULE_02 // PHYSICAL</h3>
+                <p style="color: var(--text-dim); font-size: 0.95rem;">Precision engineering of geometric paper forms and kinetic folding arrays.</p>
+                <a href="#" class="btn">SPECS.EXE</a>
             </div>
 
             <div class="card reveal">
-                <h3 style="font-family: 'Space Mono'; font-size: 0.8rem; color: var(--primary); margin-bottom: 1rem;">MODULE_03</h3>
-                <p style="color: var(--text-dim);">Structural corrugated builds including hydraulic mechanical arms and wearable armor.</p>
-                <div class="btn">SPECS.EXE</div>
+                <h3>MODULE_03 // KINETIC</h3>
+                <p style="color: var(--text-dim); font-size: 0.95rem;">Structural corrugated builds including hydraulic mechanical arms and wearable armor.</p>
+                <a href="#" class="btn">SPECS.EXE</a>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 DEV.ASTRO // PROTOCOL_COMPLETE</p>
+        <p>&copy; 2026 DEV.ASTRO // THE SMOOTHEST BUILD ON GITHUB.</p>
     </footer>
 
     <script>
+        // Intersection Observer for the "reveal" and skill bar animation
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.15 });
 
         document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
-        // Subtle mouse tracking for the background
+        // Background parallax movement
         document.addEventListener('mousemove', (e) => {
-            const x = (e.clientX / window.innerWidth) * 20;
-            const y = (e.clientY / window.innerHeight) * 20;
+            const x = (e.clientX / window.innerWidth - 0.5) * 20;
+            const y = (e.clientY / window.innerHeight - 0.5) * 20;
             document.querySelector('.mesh-gradient').style.transform = `translate(${x}px, ${y}px) scale(1.1)`;
         });
     </script>

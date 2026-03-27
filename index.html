@@ -1,1 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Professional Showcase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #a855f7;
+            --bg: #030712;
+            --card: #111827;
+            --text: #f3f4f6;
+            --text-muted: #9ca3af;
+        }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1.5rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        nav a { color: var(--text); text-decoration: none; margin-left: 2rem; font-weight: 500; transition: 0.3s; }
+        nav a:hover { color: var(--primary); }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1e1b4b 0%, #030712 100%);
+        }
+
+        .hero h1 { font-size: 5rem; margin-bottom: 1rem; background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 1.5rem; color: var(--text-muted); max-width: 600px; }
+
+        /* Sections */
+        .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
+        h2 { font-size: 2.5rem; margin-bottom: 3rem; text-align: center; }
+
+        /* Project Cards */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .card {
+            background: var(--card);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.4s;
+        }
+        .card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .card h3 { margin-bottom: 1rem; color: var(--primary); }
+
+        /* Button */
+        .btn {
+            margin-top: 2rem;
+            padding: 12px 30px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn:hover { opacity: 0.9; transform: scale(1.05); }
+
+        footer { text-align: center; padding: 50px; border-top: 1px solid rgba(255,255,255,0.1); color: var(--text-muted); }
+
+        @media (max-width: 768px) { .hero h1 { font-size: 3rem; } nav { display: none; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div style="font-weight: bold; font-size: 1.5rem;">PORTFOLIO.</div>
+        <div>
+            <a href="#work">Work</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Your Name</h1>
+        <p>Expert in [Your Field]. Building digital experiences that combine functionality with elegance.</p>
+        <a href="#work" class="btn">View Projects</a>
+    </section>
+
+    <div class="container" id="work">
+        <h2>Selected Work</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>01. Enterprise Dashboard</h3>
+                <p>A full-stack application focused on data visualization and real-time analytics.</p>
+            </div>
+            <div class="card">
+                <h3>02. Brand Identity</h3>
+                <p>Complete visual overhaul for a tech startup, including UI/UX design systems.</p>
+            </div>
+            <div class="card">
+                <h3>03. Mobile Integration</h3>
+                <p>Cross-platform mobile experience built for high-performance user interaction.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="contact" style="text-align: center;">
+        <h2>Let's Build Something Great</h2>
+        <p style="margin-bottom: 2rem;">Currently accepting new projects and collaborations.</p>
+        <a href="mailto:hello@yourname.com" class="btn">Send an Email</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Designed & Developed by You.</p>
+    </footer>
+
+</body>
+</html>

@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Astro.Dev | Shlok Kore</title>
     
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23020617'/><text y='50%' x='50%' dy='.35em' text-anchor='middle' font-family='monospace' font-weight='900' font-size='60' fill='%2300f2ff' style='filter:drop-shadow(0 0 5px %2300f2ff)'>A</text></svg>">
+    <link rel="icon" type="image/jpeg" href="Gemini_Generated_Image_knqvs2knqvs2knqv.jpg">
+    
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
@@ -31,10 +32,10 @@
 
         /* STARFIELD CANVAS FIX */
         #starfield {
-            position: fixed; /* Changed to fixed so it stays behind everything */
+            position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            z-index: -1; /* Sits between gradient and text */
+            z-index: -1;
             pointer-events: none;
         }
 
@@ -157,7 +158,6 @@
     </div>
 
     <script>
-        // ---------- Starfield Engine ----------
         const canvas = document.getElementById('starfield');
         const ctx = canvas.getContext('2d');
         let stars = [];
@@ -179,19 +179,14 @@
         }
 
         function draw() {
-            // Clear only the stars, keep transparency for the gradient behind
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
             stars.forEach(s => {
                 ctx.fillStyle = `rgba(255, 255, 255, ${s.opacity})`;
                 ctx.beginPath();
                 ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
                 ctx.fill();
-
                 s.y += s.speed;
                 if (s.y > canvas.height) s.y = 0;
-                
-                // Twinkle effect
                 s.opacity += (Math.random() - 0.5) * 0.05;
                 if (s.opacity < 0.1) s.opacity = 0.1;
                 if (s.opacity > 1) s.opacity = 1;
@@ -203,7 +198,6 @@
         initStars();
         draw();
 
-        // ---------- Scroll Engine ----------
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { 
                 if (entry.isIntersecting) entry.target.classList.add('active'); 
@@ -212,7 +206,6 @@
         
         document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
-        // ---------- Mouse Parallax ----------
         document.addEventListener('mousemove', (e) => {
             const x = (e.clientX / window.innerWidth - 0.5) * 15;
             const y = (e.clientY / window.innerHeight - 0.5) * 15;
